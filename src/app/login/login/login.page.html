@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<form class="login" #loginForm="ngForm" (ngSubmit)="login()">
+  <ion-item fill="solid">
+    <ion-label position="floating">Nome</ion-label>
+    <ion-input
+      type="text"
+      name="nome"
+      [(ngModel)]="dados.nome"
+      required
+    ></ion-input>
+    <ion-note slot="helper">Insira seu nome completo</ion-note>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Senha</ion-label>
+    <ion-input
+      type="password"
+      name="cpf"
+      [(ngModel)]="dados.cpf"
+      required
+      ></ion-input>
+      <ion-note slot="helper">Insira seu número de registro Avient ou CPF</ion-note>
+  </ion-item>
+
+  <div class="buttons">
+    <ion-button type="submit" color="dark">Entrar</ion-button>
+  </div>
+
+</form>
+
+</ion-content>

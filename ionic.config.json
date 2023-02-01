@@ -1,0 +1,7 @@
+{
+  "name": "portal-de-ideias",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
