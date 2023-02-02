@@ -1,4 +1,8 @@
+
+import { map, Observable } from 'rxjs';
+import { ListarUsuariosService } from './../service/listar-usuarios.service';
 import { Component, OnInit } from '@angular/core';
+import { Page } from '../types/Page';
 
 @Component({
   selector: 'app-lista-de-usuarios',
@@ -7,8 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaDeUsuariosComponent implements OnInit {
 
-  constructor() { }
+  //@ts-ignore
+  usuarios : Observable<Page> = this.listarUsuarios();
 
-  ngOnInit() {}
+  constructor(
+    private listarUsuariosService : ListarUsuariosService
+  ) { }
+
+  ngOnInit() {
+  }
+
+
+  listarUsuarios(){
+    return this.listarUsuariosService.listarUsuarios().subscribe(
+      (dados) => {console.log(dados)
+      },
+      (error) => {console.log(error)
+      }
+    );
+  }
+
 
 }

@@ -1,90 +1,106 @@
-<form class="cadastro" [formGroup]="novoUsuarioForm" (submit)="cadastrarUsuario()">
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Gestão de usuários </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <h2>Cadastrar novo usuário</h2>
-  <div class="inputs">
-    <ion-item fill="outline">
-      <ion-label position="floating">Nome</ion-label>
-      <ion-input
-        placeholder="Nome e Sobrenome"
-        formControlName="nome"
-      ></ion-input>
-      <ion-note
-      *ngIf="novoUsuarioForm.get('nome')?.errors?.['required'] &&
+<ion-content [fullscreen]="true" color="">
+  <form
+    class="cadastro"
+    [formGroup]="novoUsuarioForm"
+    (submit)="cadastrarUsuario()"
+  >
+    <h1 class="titulo">Cadastrar novo usuário</h1>
+    <div class="inputs">
+      <ion-item fill="outline">
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input
+          placeholder="Nome e Sobrenome"
+          formControlName="nome"
+        ></ion-input>
+        <ion-note
+          *ngIf="novoUsuarioForm.get('nome')?.errors?.['required'] &&
       novoUsuarioForm.get('nome')?.touched"
-      slot="error">Campo obrigatório</ion-note>
-    </ion-item>
+          slot="error"
+          >Campo obrigatório</ion-note
+        >
+      </ion-item>
 
-    <ion-item fill="outline">
-      <ion-label position="floating">Registro</ion-label>
-      <ion-input
-        placeholder="Número do registro Avient"
-        formControlName="registro"
-       ></ion-input>
-    </ion-item>
+      <ion-item fill="outline">
+        <ion-label position="floating">Registro</ion-label>
+        <ion-input
+          placeholder="Número do registro Avient"
+          formControlName="registro"
+        ></ion-input>
+      </ion-item>
 
-    <ion-item fill="outline">
-      <ion-label position="floating">CPF</ion-label>
-      <ion-input
-        placeholder="CPF Válido"
-        formControlName="cpf"
-        name="cpf"
-      ></ion-input>
-      <ion-note
-      *ngIf="novoUsuarioForm.errors?.['cpfInvalido'] &&
+      <ion-item fill="outline">
+        <ion-label position="floating">CPF</ion-label>
+        <ion-input
+          placeholder="CPF Válido"
+          formControlName="cpf"
+          name="cpf"
+        ></ion-input>
+        <ion-note
+          *ngIf="novoUsuarioForm.errors?.['cpfInvalido'] &&
       novoUsuarioForm.get('cpf')?.touched"
-      slot="error">CPF inválido</ion-note>
-      <ion-note
-        *ngIf="novoUsuarioForm.get('cpf')?.errors?.['required'] &&
+          slot="error"
+          >CPF inválido</ion-note
+        >
+        <ion-note
+          *ngIf="novoUsuarioForm.get('cpf')?.errors?.['required'] &&
         novoUsuarioForm.get('cpf')?.touched"
-        slot="error">Campo obrigatório</ion-note>
+          slot="error"
+          >Campo obrigatório</ion-note
+        >
+      </ion-item>
 
-    </ion-item>
-
-    <ion-item fill="outline">
-      <ion-label position="floating">Setor</ion-label>
-      <ion-input
-        placeholder="Setor de trabalho"
-        formControlName="setor"
+      <ion-item fill="outline">
+        <ion-label position="floating">Setor</ion-label>
+        <ion-input
+          placeholder="Setor de trabalho"
+          formControlName="setor"
         ></ion-input>
         <ion-note
-        *ngIf="novoUsuarioForm.get('setor')?.errors?.['required'] &&
+          *ngIf="novoUsuarioForm.get('setor')?.errors?.['required'] &&
         novoUsuarioForm.get('setor')?.touched"
-        slot="error">Campo obrigatório</ion-note>
-    </ion-item>
+          slot="error"
+          >Campo obrigatório</ion-note
+        >
+      </ion-item>
 
-    <ion-item fill="outline">
-      <ion-label position="floating">Turno</ion-label>
-      <ion-input
-        placeholder="Turno de trabalho"
-        formControlName="letraTurno"
+      <ion-item fill="outline">
+        <ion-label position="floating">Turno</ion-label>
+        <ion-input
+          placeholder="Turno de trabalho"
+          formControlName="letraTurno"
         ></ion-input>
         <ion-note
-        *ngIf="novoUsuarioForm.get('letraTurno')?.errors?.['required'] &&
+          *ngIf="novoUsuarioForm.get('letraTurno')?.errors?.['required'] &&
         novoUsuarioForm.get('letraTurno')?.touched"
-        slot="error">Campo obrigatório</ion-note>
-    </ion-item>
+          slot="error"
+          >Campo obrigatório</ion-note
+        >
+      </ion-item>
 
-    <ion-item fill="outline">
-      <ion-label position="floating">Ramal</ion-label>
-      <ion-input
-        placeholder="Ramal para contato"
-        formControlName="ramal"
-      ></ion-input>
-      <ion-note
-      *ngIf="novoUsuarioForm.get('ramal')?.errors?.['required'] &&
+      <ion-item fill="outline">
+        <ion-label position="floating">Ramal</ion-label>
+        <ion-input
+          placeholder="Ramal para contato"
+          formControlName="ramal"
+        ></ion-input>
+        <ion-note
+          *ngIf="novoUsuarioForm.get('ramal')?.errors?.['required'] &&
       novoUsuarioForm.get('ramal')?.touched"
-      slot="error">Campo obrigatório</ion-note>
-    </ion-item>
+          slot="error"
+          >Campo obrigatório</ion-note
+        >
+      </ion-item>
 
-    <div class="buttons">
-      <ion-button type="submit" color="dark">Cadastrar</ion-button>
-      <ion-button type="reset" color="dark">Apagar</ion-button>
-
+      <div class="buttons">
+        <ion-button size="large" type="submit" color="dark">Cadastrar</ion-button>
+        <ion-button size="large" type="reset" color="dark">Apagar Dados</ion-button>
+      </div>
     </div>
-
-  </div>
-
-
-</form>
-
-
+  </form>
+</ion-content>
