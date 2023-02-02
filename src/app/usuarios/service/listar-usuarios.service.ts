@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, tap, map } from 'rxjs';
 import { UsuarioList } from './../types/UsuarioList';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -11,14 +11,17 @@ import { Page } from '../types/Page';
 })
 export class ListarUsuariosService {
 
-  private readonly API = `${environment.api_url}/usuarios`
+  private readonly API = `${environment.api_url}/usuarios`;
 
   constructor(
     private http: HttpClient
   ) { }
 
-  public listarUsuarios(){
+  public listarUsuarios() {
     return this.http.get<Page>(this.API)
+    .pipe(
+      map((page)=> page.content)
+    );
   }
 
 }

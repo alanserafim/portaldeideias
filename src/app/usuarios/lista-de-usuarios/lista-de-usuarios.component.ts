@@ -1,3 +1,4 @@
+import { UsuarioList } from './../types/UsuarioList';
 
 import { map, Observable } from 'rxjs';
 import { ListarUsuariosService } from './../service/listar-usuarios.service';
@@ -12,13 +13,20 @@ import { Page } from '../types/Page';
 export class ListaDeUsuariosComponent implements OnInit {
 
   //@ts-ignore
-  usuarios : Observable<Page> = this.listarUsuarios();
+  usuarios$ : UsuarioList[] = this.listarUsuarios();
+
+  //private users: UsuarioList[]; // Nossa lista de usuários
+
 
   constructor(
-    private listarUsuariosService : ListarUsuariosService
-  ) { }
+    private listarUsuariosService : ListarUsuariosService,
+  ) {
 
-  ngOnInit() {
+  }
+
+  ngOnInit(
+  ) {
+    
   }
 
 
