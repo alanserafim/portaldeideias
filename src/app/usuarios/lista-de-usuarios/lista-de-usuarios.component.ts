@@ -4,6 +4,7 @@ import { map, Observable } from 'rxjs';
 import { ListarUsuariosService } from './../service/listar-usuarios.service';
 import { Component, OnInit } from '@angular/core';
 import { Page } from '../types/Page';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-lista-de-usuarios',
@@ -13,7 +14,7 @@ import { Page } from '../types/Page';
 export class ListaDeUsuariosComponent implements OnInit {
 
   //@ts-ignore
-  usuarios$ : UsuarioList[] = this.listarUsuarios();
+  usuarios$ : Observable<UsuarioList[]>;
 
   //private users: UsuarioList[]; // Nossa lista de usuários
 
@@ -22,21 +23,12 @@ export class ListaDeUsuariosComponent implements OnInit {
     private listarUsuariosService : ListarUsuariosService,
   ) {
 
+    this.usuarios$ = this.listarUsuariosService.listarUsuarios();
   }
 
   ngOnInit(
   ) {
-    
-  }
 
-
-  listarUsuarios(){
-    return this.listarUsuariosService.listarUsuarios().subscribe(
-      (dados) => {console.log(dados)
-      },
-      (error) => {console.log(error)
-      }
-    );
   }
 
 
