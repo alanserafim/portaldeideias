@@ -1,0 +1,81 @@
+<ion-content [fullscreen]="true" color="">
+  <form
+    class="cadastro"
+    [formGroup]="atualizarUsuarioForm"
+    (submit)="atualizarUsuario()"
+  >
+    <h1 class="titulo">Atualizar usuário</h1>
+    <div class="inputs">
+      <ion-item fill="outline">
+        <ion-label position="floating">Id</ion-label>
+        <ion-input
+          formControlName="id"
+        ></ion-input>
+        <ion-note slot="helper">id do usuário</ion-note>
+      </ion-item>
+
+      <ion-item fill="outline">
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input
+          formControlName="nome"
+        ></ion-input>
+        <ion-note slot="helper">Nome e Sobrenome</ion-note>
+      </ion-item>
+
+      <ion-item fill="outline">
+        <ion-label position="floating">Registro</ion-label>
+        <ion-input
+          formControlName="registro"
+        ></ion-input>
+        <ion-note slot="helper">Número do registro Avient</ion-note>
+      </ion-item>
+
+      <ion-item fill="outline">
+        <ion-label position="floating">CPF</ion-label>
+        <ion-input
+          formControlName="cpf"
+          name="cpf"
+        ></ion-input>
+        <ion-note slot="helper">CPF Válido</ion-note>
+      </ion-item>
+
+      <ion-item fill="outline">
+        <ion-label position="floating">Perfil</ion-label>
+        <ion-input
+          formControlName="perfil"
+        ></ion-input>
+        <ion-note slot="helper">Perfil de acesso</ion-note>
+      </ion-item>
+
+      <ion-item fill="outline">
+        <ion-label position="floating">Setor</ion-label>
+        <ion-input
+          formControlName="setor"
+        ></ion-input>
+        <ion-note slot="helper">Setor de trabalho</ion-note>
+      </ion-item>
+
+      <ion-item fill="outline">
+        <ion-label position="floating">Turno</ion-label>
+        <ion-input
+          placeholder="Turno de trabalho"
+          formControlName="letraTurno"
+        ></ion-input>
+        <ion-note slot="helper">Turno de trabalho</ion-note>
+      </ion-item>
+
+      <ion-item fill="outline">
+        <ion-label position="floating">Ramal</ion-label>
+        <ion-input
+          formControlName="ramal"
+        ></ion-input>
+        <ion-note slot="helper">Ramal para contato</ion-note>
+      </ion-item>
+
+      <div class="buttons">
+        <ion-button size="large" type="submit" color="dark">Atualizar Dados</ion-button>
+        <ion-button size="large" type="reset" color="dark">Apagar Dados</ion-button>
+      </div>
+    </div>
+  </form>
+</ion-content>
