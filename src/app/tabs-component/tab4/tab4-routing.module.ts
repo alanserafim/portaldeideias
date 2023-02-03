@@ -19,7 +19,7 @@ const routes: Routes = [
     component: ListaDeUsuariosComponent,
   },
   {
-    path: 'atualizar',
+    path: 'atualizar/:id',
     component: AtualizarUsuarioComponent,
   },
 

@@ -28,7 +28,6 @@ export class ListaDeUsuariosComponent implements OnInit {
 
   ngOnInit(
   ) {
-
   }
 
 

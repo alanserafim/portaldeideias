@@ -1,3 +1,5 @@
+import { UsuarioDetails } from './../types/UsuarioDetails';
+import { tap, Observable, map } from 'rxjs';
 import { UsuarioList } from './../types/UsuarioList';
 import { AtualizarUsuarioService } from './../service/atualizar-usuario.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,6 +17,11 @@ export class AtualizarUsuarioComponent implements OnInit {
 usuarioId : number;
 
 //@ts-ignore
+usuario$ : Observable<UsuarioDetails>;
+
+
+
+//@ts-ignore
 public atualizarUsuarioForm: FormGroup;
 
   constructor(
@@ -23,17 +30,20 @@ public atualizarUsuarioForm: FormGroup;
     private atualizarService : AtualizarUsuarioService,
     private route: ActivatedRoute,
     private toastController: ToastController
-  ) { }
+  ) {
+
+  }
 
   ngOnInit() {
-
-    this.usuarioId = this.route.snapshot.params['id']
-
-
+    this.usuarioId = this.route.snapshot.params['id'];
+    console.log(this.usuarioId);
+    //@ts-ignore
+    this.usuario$ = this.detalhamentoUsuario();
+    console.log(this.usuario$);
 
     this.atualizarUsuarioForm = this.formBuilder.group(
       {
-        id: ["", []],
+        id: ["",[]],
         nome: ["", []],
         registro: ["", []],
         cpf: ["", []],
@@ -41,12 +51,19 @@ public atualizarUsuarioForm: FormGroup;
         setor: ["", []],
         letraTurno: ["", []],
         ramal: ["", []],
-    })
+    }
+
+
+    )
+
+
+
+
   }
 
   atualizarUsuario() {
     const usuarioAtualizado = this.atualizarUsuarioForm.getRawValue() as UsuarioList
-    this.atualizarService.atualizarUsuario(this.usuarioId, usuarioAtualizado)
+    this.atualizarService.atualizarUsuario(usuarioAtualizado)
     .subscribe(()=>{
       this.presentToastSucess('middle');
       this.router.navigate(['tabs/tab4']);
@@ -60,12 +77,24 @@ public atualizarUsuarioForm: FormGroup;
 
     }
 
-    public detalhaUsuario(){
-      
+    public detalhamentoUsuario(){
+      return this.atualizarService.detalharUsuario(this.usuarioId)
+        .subscribe(
+          resultado => {
+            const usuario : UsuarioDetails = resultado
+            console.log(usuario)
+            this.atualizarUsuarioForm.setValue({
+              id: usuario.id,
+              nome: usuario.nome,
+              registro: usuario.registro,
+              cpf: usuario.cpf,
+              perfil: usuario.perfil,
+              setor: usuario.setor,
+              letraTurno: usuario.letraTurno,
+              ramal: usuario.ramal,
+            })
+    });
     }
-
-
-
 
 
 

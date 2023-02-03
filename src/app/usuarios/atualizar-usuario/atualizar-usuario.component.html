@@ -1,3 +1,5 @@
+
+
 <ion-content [fullscreen]="true" color="">
   <form
     class="cadastro"
@@ -7,7 +9,6 @@
     <h1 class="titulo">Atualizar usuário</h1>
     <div class="inputs">
       <ion-item fill="outline">
-        <ion-label position="floating">Id</ion-label>
         <ion-input
           formControlName="id"
         ></ion-input>
@@ -34,7 +35,6 @@
         <ion-label position="floating">CPF</ion-label>
         <ion-input
           formControlName="cpf"
-          name="cpf"
         ></ion-input>
         <ion-note slot="helper">CPF Válido</ion-note>
       </ion-item>
@@ -79,3 +79,4 @@
     </div>
   </form>
 </ion-content>
+<ng-template #loading>Carregando dados...</ng-template>
