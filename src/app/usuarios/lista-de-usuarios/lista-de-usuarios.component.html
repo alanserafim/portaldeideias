@@ -5,13 +5,8 @@
 </ion-header>
 
 <ion-content class="list-avatar-page">
-
   <ion-list>
-
-    <ion-list-header>
-      Lista de usuários cadastrados
-    </ion-list-header>
-
+    <ion-list-header> Lista de usuários cadastrados </ion-list-header>
 
     <ion-item-sliding *ngFor="let usuario of usuarios$ | async">
       <ion-item>
@@ -28,21 +23,25 @@
         <ion-note item-end>{{ usuario.letraTurno }}</ion-note>
       </ion-item>
       <ion-item-options class="options">
-        <button ion-button color="light" icon-start>
-          <ion-icon name="information-circle-outline"></ion-icon>
-          <p>Detalhar</p>
-        </button>
-        <button ion-button color="primary" icon-start>
-          <ion-icon name="person-add-outline"></ion-icon>
-          <p>Atualizar</p>
-        </button>
-        <button ion-button color="secondary" icon-start>
-          <ion-icon name="trash-outline"></ion-icon>
-          <p>Apagar</p>
-        </button>
+        <ion-button class="" color="light" icon-start>
+          <div class="buttons">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <p>Detalhar</p>
+          </div>
+        </ion-button>
+        <ion-button color="primary" icon-start>
+          <div class="buttons">
+            <ion-icon name="person-add-outline"></ion-icon>
+            <p>Atualizar</p>
+          </div>
+        </ion-button>
+        <ion-button color="danger" icon-start>
+          <div class="buttons">
+            <ion-icon name="trash-outline"></ion-icon>
+            <p>Apagar</p>
+          </div>
+        </ion-button>
       </ion-item-options>
     </ion-item-sliding>
-
   </ion-list>
-
 </ion-content>
