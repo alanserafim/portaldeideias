@@ -23,19 +23,19 @@
         <ion-note item-end>{{ usuario.letraTurno }}</ion-note>
       </ion-item>
       <ion-item-options class="options">
-        <ion-button class="" color="light" icon-start>
+        <ion-button class="" color="light" icon-start (click)="detalharPage(usuario.id)">
           <div class="buttons">
             <ion-icon name="information-circle-outline"></ion-icon>
             <p>Detalhar</p>
           </div>
         </ion-button>
-        <ion-button color="primary" icon-start>
+        <ion-button color="primary" icon-start (click)="atualizarPage(usuario.id)">
           <div class="buttons">
             <ion-icon name="person-add-outline"></ion-icon>
             <p>Atualizar</p>
           </div>
         </ion-button>
-        <ion-button color="danger" icon-start>
+        <ion-button color="danger" icon-start (click)="apagarPage(usuario.id)">
           <div class="buttons">
             <ion-icon name="trash-outline"></ion-icon>
             <p>Apagar</p>

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UsuarioList } from './../types/UsuarioList';
 
 import { map, Observable } from 'rxjs';
@@ -21,6 +22,7 @@ export class ListaDeUsuariosComponent implements OnInit {
 
   constructor(
     private listarUsuariosService : ListarUsuariosService,
+    private router : Router
   ) {
 
     this.usuarios$ = this.listarUsuariosService.listarUsuarios();
@@ -28,6 +30,21 @@ export class ListaDeUsuariosComponent implements OnInit {
 
   ngOnInit(
   ) {
+  }
+
+  atualizarPage(id: number){
+    const page: string = `/tabs/tab4/atualizar/${id}`
+    this.router.navigate([page])
+  }
+
+  detalharPage(id: number){
+    const page: string = `/tabs/tab4/detalhar/${id}`
+    this.router.navigate([page])
+  }
+
+  apagarPage(id: number){
+    const page: string = `/tabs/tab4/apagar/${id}`
+    this.router.navigate([page])
   }
 
 
