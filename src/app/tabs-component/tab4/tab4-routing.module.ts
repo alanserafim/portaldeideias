@@ -24,7 +24,7 @@ const routes: Routes = [
     component: AtualizarUsuarioComponent,
   },
   {
-    path: 'detalhar',
+    path: 'detalhar/:id',
     component: DetalharUsuarioComponent,
   },
 

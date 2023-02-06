@@ -1,11 +1,11 @@
-import { Router } from '@angular/router';
-import { UsuarioList } from './../types/UsuarioList';
-
-import { map, Observable } from 'rxjs';
-import { ListarUsuariosService } from './../service/listar-usuarios.service';
 import { Component, OnInit } from '@angular/core';
-import { Page } from '../types/Page';
-import { threadId } from 'worker_threads';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
+import { DeletarUsuarioService } from './../service/deletar-usuario.service';
+import { ListarUsuariosService } from './../service/listar-usuarios.service';
+import { UsuarioList } from './../types/UsuarioList';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-lista-de-usuarios',
@@ -22,7 +22,9 @@ export class ListaDeUsuariosComponent implements OnInit {
 
   constructor(
     private listarUsuariosService : ListarUsuariosService,
-    private router : Router
+    private router : Router,
+    private deletarUsuarioService: DeletarUsuarioService,
+    private alertController: AlertController
   ) {
 
     this.usuarios$ = this.listarUsuariosService.listarUsuarios();
@@ -43,9 +45,40 @@ export class ListaDeUsuariosComponent implements OnInit {
   }
 
   apagarPage(id: number){
-    const page: string = `/tabs/tab4/apagar/${id}`
-    this.router.navigate([page])
+    this.presentAlert(id)
+
   }
+
+  deletaUsuario(id: number){
+    this.deletarUsuarioService.deletaUsuario(id).subscribe()
+  }
+
+  async presentAlert(id: number) {
+    const alert = await this.alertController.create({
+      header: `Você tem certeza que deseja apagar o usuário`,
+      cssClass: 'custom-alert',
+      buttons: [
+        {
+          text: 'Sim',
+          cssClass: 'alert-button-confirm',
+          handler: data => {
+            this.deletaUsuario(id)
+          }
+        },
+        {
+          text: 'Não',
+          cssClass: 'alert-button-cancel',
+        },
+
+      ],
+    });
+
+    await alert.present();
+  }
+
+
+
+
 
 
 }

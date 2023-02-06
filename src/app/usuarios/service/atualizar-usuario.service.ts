@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
@@ -20,7 +21,7 @@ export class AtualizarUsuarioService {
     return this.http.put(API, usuario);
   }
 
-  public detalharUsuario(id : number){
+  public detalharUsuario(id : number): Observable<any>{
     const API = `${environment.api_url}/usuarios/${id}`;
     return this.http.get<UsuarioDetails>(API)
   }
