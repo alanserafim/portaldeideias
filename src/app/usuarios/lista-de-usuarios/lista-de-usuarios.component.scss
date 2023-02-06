@@ -6,7 +6,7 @@
   }
 
   ion-item{
-    padding: 1em 0 1em 0;
+    padding: 1rem;
   }
 }
 
@@ -18,21 +18,22 @@
   width: 70%;
 
   h2{
-    font-size: 1.2rem;
+    font-size: .87rem;
     margin: 0;
-    padding: 0;
+    padding: .6rem 0 0 0;
     border: 0;
   }
   p{
     font-size: .8rem;
     margin: 0;
-    padding: 0;
+    padding: 0 0 .4rem 0;
     border: 0;
   }
 }
 
 
 .options{
+
 
   .buttons{
    display: flex;
@@ -48,3 +49,9 @@
   }
 
 }
+
+ion-item-options{
+  margin: .8rem  .2rem .2rem 0;
+  padding-right: 1rem;
+}
+
