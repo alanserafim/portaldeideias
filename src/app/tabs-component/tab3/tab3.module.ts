@@ -1,3 +1,4 @@
+import { ConfiguracoesModule } from './../../configuracoes/configuracoes.module';
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -14,7 +15,8 @@ import { ExploreContainerComponentModule } from 'src/app/explore-container/explo
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab3PageRoutingModule
+    Tab3PageRoutingModule,
+    ConfiguracoesModule
   ],
   declarations: [Tab3Page]
 })
