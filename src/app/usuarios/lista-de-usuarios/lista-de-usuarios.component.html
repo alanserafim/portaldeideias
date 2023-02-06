@@ -1,12 +1,13 @@
-<ion-header>
-  <ion-nav>
-    <ion-title>Avatar List</ion-title>
-  </ion-nav>
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Gestão de usuários </ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content class="list-avatar-page">
   <ion-list>
-    <ion-list-header> Lista de usuários cadastrados </ion-list-header>
+    <ion-list-header> Usuários cadastrados </ion-list-header>
 
     <ion-item-sliding *ngFor="let usuario of usuarios$ | async">
       <ion-item>

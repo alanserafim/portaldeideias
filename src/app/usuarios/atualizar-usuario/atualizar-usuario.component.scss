@@ -1,11 +1,18 @@
-.titulo
-{
-  text-align: center;
-  font-size: 1.5rem;
+form {
+  max-width: 80%;
+  margin: auto;
 }
 
-ion-item
-{
+
+.titulo {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 1rem 0;
+  text-transform: uppercase;
+}
+
+ion-item{
   margin-bottom: 4px;
 }
 
@@ -14,4 +21,10 @@ ion-item
   padding-top: 1rem;
   display: flex;
   justify-content: center;
+
+  ion-button{
+    width: 50%;
+    height: 6vh;
+    font-size: .8rem;
+  }
 }

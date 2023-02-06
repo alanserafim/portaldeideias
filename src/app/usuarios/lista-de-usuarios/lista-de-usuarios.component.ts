@@ -1,3 +1,4 @@
+import { AtualizarUsuarioService } from './../service/atualizar-usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -17,14 +18,16 @@ export class ListaDeUsuariosComponent implements OnInit {
   //@ts-ignore
   usuarios$ : Observable<UsuarioList[]>;
 
-  //private users: UsuarioList[]; // Nossa lista de usuários
+  //@ts-ignore
+  // usuarioNome : String;
 
 
   constructor(
     private listarUsuariosService : ListarUsuariosService,
     private router : Router,
     private deletarUsuarioService: DeletarUsuarioService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private atualizarService : AtualizarUsuarioService
   ) {
 
     this.usuarios$ = this.listarUsuariosService.listarUsuarios();
@@ -55,7 +58,7 @@ export class ListaDeUsuariosComponent implements OnInit {
 
   async presentAlert(id: number) {
     const alert = await this.alertController.create({
-      header: `Você tem certeza que deseja apagar o usuário`,
+      header: `Você tem certeza que deseja apagar o usuário?`,
       cssClass: 'custom-alert',
       buttons: [
         {
@@ -76,6 +79,14 @@ export class ListaDeUsuariosComponent implements OnInit {
     await alert.present();
   }
 
+
+  // receberNomeUsuario(id : any){
+  //   return this.atualizarService.detalharUsuario(id).subscribe(
+  //     resultado => {
+  //       this.usuarioNome = resultado.nome;
+  //     }
+  //   );
+  // }
 
 
 
