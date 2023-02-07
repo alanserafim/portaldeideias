@@ -5,9 +5,18 @@
 </ion-header>
 
 <ion-content>
+  <div class="logo">
+    <ion-icon name="bulb-outline"></ion-icon>
+    <h1 class="titulo">Portal de Ideias</h1>
+    <h2 class="empresa">Avient</h2>
+    <p class="frase">Challenge Accepted.</p>
+  </div>
+
+  <div class="wrapper">
 
 <form class="login" #loginForm="ngForm" (ngSubmit)="login()">
-  <ion-item fill="solid">
+  <p>Acesse o portal e contribua para o processo de melhoria contínua da Avient.</p>
+  <ion-item >
     <ion-label position="floating">Nome</ion-label>
     <ion-input
       type="text"
@@ -30,9 +39,11 @@
   </ion-item>
 
   <div class="buttons">
-    <ion-button type="submit" color="dark">Entrar</ion-button>
+    <ion-button class="custom" type="submit">ENTRAR</ion-button>
   </div>
 
 </form>
+
+</div>
 
 </ion-content>

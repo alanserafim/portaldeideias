@@ -48,3 +48,17 @@ ion-toast.custom-toast {
 //   --detail-icon-opacity: 1;
 //   --detail-icon-font-size: 20px;
 // }
+
+ion-button.custom {
+  --background: #D9D9D9;
+  --background-activated: #a39d9d;
+  --color: black;
+
+}
+
+.login{
+  ion-item::part(native) {
+    border-radius: 12px;
+  }
+
+}
