@@ -1,9 +1,3 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <div class="logo">
     <ion-icon name="bulb-outline"></ion-icon>
@@ -16,8 +10,8 @@
 
 <form class="login" #loginForm="ngForm" (ngSubmit)="login()">
   <p>Acesse o portal e contribua para o processo de melhoria contínua da Avient.</p>
-  <ion-item >
-    <ion-label position="floating">Nome</ion-label>
+  <ion-item class="custom-item">
+    <ion-label position="stacked">Nome</ion-label>
     <ion-input
       type="text"
       name="nome"
@@ -27,15 +21,15 @@
     <ion-note slot="helper">Insira seu nome completo</ion-note>
   </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Senha</ion-label>
+  <ion-item class="custom-item">
+    <ion-label position="stacked">Senha</ion-label>
     <ion-input
       type="password"
       name="cpf"
       [(ngModel)]="dados.cpf"
       required
       ></ion-input>
-      <ion-note slot="helper">Insira seu número de registro Avient ou CPF</ion-note>
+      <ion-note slot="helper">Insira seu CPF</ion-note>
   </ion-item>
 
   <div class="buttons">

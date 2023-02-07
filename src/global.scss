@@ -32,33 +32,21 @@ ion-toast.custom-toast {
   --color: #f8f8f8;
 }
 
-// ion-item.custom-item {
-//   --background: #19422d;
-//   --color: #fff;
-
-//   --border-color: #fff;
-//   --border-style: dashed;
-//   --border-width: 2px;
-
-//   --border-radius: 20px;
-
-//   --ripple-color: purple;
-
-//   --detail-icon-color: white;
-//   --detail-icon-opacity: 1;
-//   --detail-icon-font-size: 20px;
-// }
+ion-item.custom-item {
+  --border-radius: 12px;
+}
 
 ion-button.custom {
   --background: #D9D9D9;
   --background-activated: #a39d9d;
   --color: black;
+  --border-radius: 12px;
 
 }
 
-.login{
-  ion-item::part(native) {
-    border-radius: 12px;
-  }
+// .login{
+//   ion-item::part(native) {
+//     border-radius: 12px;
+//   }
 
-}
+// }
