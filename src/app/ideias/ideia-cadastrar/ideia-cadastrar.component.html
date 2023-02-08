@@ -1,3 +1,64 @@
-<p>
-  ideia-cadastrar works!
-</p>
+<ion-content [fullscreen]="true" color="">
+  <form
+    [formGroup]="novaIdeiaForm"
+    (submit)="cadastrarIdeia()"
+  >
+    <h1 class="titulo">Cadastrar novo usuário</h1>
+      <ion-item>
+        <ion-label>Titulo: </ion-label>
+        <ion-input
+          formControlName="titulo"
+          name="titulo"
+        ></ion-input>
+        <!-- <ion-note
+          *ngIf="novoUsuarioForm.get('nome')?.errors?.['required'] &&
+      novoUsuarioForm.get('nome')?.touched"
+          slot="error"
+          >Campo obrigatório</ion-note
+        > -->
+      </ion-item>
+
+      <ion-list>
+        <ion-item>
+          Assunto: &nbsp;
+          <ion-select
+            placeholder="selecione"
+            formControlName="assunto"
+            name="assunto"
+          >
+            <ion-select-option value="PRODUTIVIDADE">Produtividade</ion-select-option>
+            <ion-select-option value="6S">6 S</ion-select-option>
+            <ion-select-option value="SEGURANCA">Segurança</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <ion-item>
+        <ion-label>Descrição: </ion-label>
+        <ion-textarea
+          placeholder="Descreva aqui a sua ideia" [autoGrow]="true"
+          value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus sem, auctor accumsan egestas sed, venenatis at ex. Nam consequat ex odio, suscipit rhoncus orci dictum eget. Aenean sit amet ligula varius felis facilisis lacinia nec volutpat nulla. Duis ullamcorper sit amet turpis sed blandit. Integer pretium massa eu faucibus interdum."
+          formControlName="descricao"
+          name="descricao"
+          >
+        </ion-textarea>
+      </ion-item>
+
+      <input
+      type="hidden"
+      value=""
+      formControlName="dataInclusao"
+      name="dataInclusao"
+      >
+      <input
+      type="hidden"
+      value=""
+      formControlName="usuario"
+      name="usuario"
+      >
+      <div class="buttons">
+        <ion-button type="submit" color="tertiary">Cadastrar</ion-button>
+        <ion-button type="reset" color="medium">Apagar Dados</ion-button>
+      </div>
+  </form>
+</ion-content>
