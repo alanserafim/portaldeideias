@@ -3,14 +3,14 @@ ion-button{
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  align-content: center;
+  align-content: flex-start;
   text-decoration: none;
   background-color: transparent;
   height: 6vh;
   color: black;
 
   p{
-    font-size: 1.3rem;
+    font-size: 1rem;
     padding: 0 0 0 1rem;
     margin: 0;
     line-height: 2rem;

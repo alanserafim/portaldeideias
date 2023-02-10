@@ -1,0 +1,32 @@
+.titulo
+{
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 2rem 0;
+  text-transform: uppercase;
+}
+
+.buttons
+{
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+
+  ion-button{
+    width: 50%;
+    height: 6vh;
+  }
+}
+
+form {
+  max-width: 80%;
+  margin: auto;
+}
+ion-item{
+  margin-bottom: 2rem;
+}
+
+ion-textarea{
+  min-height: 30vh;
+}
