@@ -25,33 +25,33 @@ O sistema é composto por uma API REST e um banco de dados relacional na camada 
 
 Requisito 01 – Cadastrar ideia
 
-    •	Como – usuário 
-    •	Eu quero – cadastrar uma nova ideia com todos os detalhes necessários 
-    •	De maneira que – seja possível a avaliação da ideia por um gestor.
+    Como – usuário 
+    Eu quero – cadastrar uma nova ideia com todos os detalhes necessários 
+    De maneira que – seja possível a avaliação da ideia por um gestor.
 
 Requisito 02 – Consultar ideia
 
-    •	Como – usuário 
-    •	Eu quero – consultar uma ideia por mim cadastrada 
-    •	De maneira que – seja possível visualizar o status da ideia e acompanhar o andamento através do histórico da ideia.
+    Como – usuário 
+    Eu quero – consultar uma ideia por mim cadastrada 
+    De maneira que – seja possível visualizar o status da ideia e acompanhar o andamento através do histórico da ideia.
 
 Requisito 03 – Avaliar ideia
 
-    •	Como – gestor 
-    •	Eu quero – avaliar uma ideia cadastrada 
-    •	De maneira que – seja possível incluir um status específico e fazer observações.
+    Como – gestor 
+    Eu quero – avaliar uma ideia cadastrada 
+    De maneira que – seja possível incluir um status específico e fazer observações.
 
 Requisito 04 – Notificar ideia
 
-    •	Como – gestor ou usuário
-    •	Eu quero – que o sistema gere notificações
-    •	De maneira que – ao cadastrar, avaliar ou editar, os envolvidos no processo sejam devidamente notificados. 
+    Como – gestor ou usuário
+    Eu quero – que o sistema gere notificações
+    De maneira que – ao cadastrar, avaliar ou editar, os envolvidos no processo sejam devidamente notificados. 
 
 Requisito 05 – Consultar quadro geral de ideias
 
-    •	Como – gestor
-    •	Eu quero – visualizar o quadro geral de ideias
-    •	De maneira que – visualizar o total de ideias e aplicar filtros diversos.
+    Como – gestor
+    Eu quero – visualizar o quadro geral de ideias
+    De maneira que – visualizar o total de ideias e aplicar filtros diversos.
 
 
 ## Diagrama de Classes de Domínio
