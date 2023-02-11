@@ -12,7 +12,7 @@
 
 ## Introdução
 
-Este projeto possui o objetivo principal **implementar um sistema de gerenciamento de ideias como parte integrante do processo de melhoria contínua da empresa**.  
+Este projeto possui o objetivo principal **implementar um sistema de gerenciamento de ideias como parte integrante do processo de melhoria contínua de um organização**.  
 
 
 ## Análise técnica
