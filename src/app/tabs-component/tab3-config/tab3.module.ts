@@ -1,13 +1,12 @@
-import { UsuariosModule } from './../../usuarios/usuarios.module';
+import { ConfiguracoesModule } from '../../configuracoes/configuracoes.module';
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Tab3Page } from './tab3.page';
 
 
-
-import { Tab4PageRoutingModule } from './tab4-routing.module';
-import { Tab4Page } from './tab4.page';
+import { Tab3PageRoutingModule } from './tab3-routing.module';
 import { ExploreContainerComponentModule } from 'src/app/explore-container/explore-container.module';
 
 @NgModule({
@@ -16,9 +15,9 @@ import { ExploreContainerComponentModule } from 'src/app/explore-container/explo
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab4PageRoutingModule,
-    UsuariosModule
+    Tab3PageRoutingModule,
+    ConfiguracoesModule
   ],
-  declarations: [Tab4Page]
+  declarations: [Tab3Page]
 })
-export class Tab4PageModule {}
+export class Tab3PageModule {}

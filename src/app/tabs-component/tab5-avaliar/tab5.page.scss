@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+ion-card {
+  max-width: 40%;
+}
+
+ion-card-title {
+  font-size: 16px;
+  text-align: center;
+}
+
+ion-card-content {
+  text-align: center;
+  font-size: 12px;
+}
+
+ion-title {
+  font-size: 1.3rem;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+.header {
+  height: 40vh;
+  background-color: #e34851;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  ion-avatar {
+    width: 40%;
+    height: auto;
+    margin-top: 4rem;
+  }
+}
+
+.main {
+  background-color: #d9d9d9;
+  height: 100%;
+}
+
+ion-content {
+  height: 60vh;
+}
