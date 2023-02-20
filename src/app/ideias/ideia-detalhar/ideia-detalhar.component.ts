@@ -1,4 +1,7 @@
+import { IdeiasService } from './../service/ideias.service';
+import { IdeiaDetalhes } from './../types/ideiaDetalhes';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-ideia-detalhar',
@@ -7,8 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IdeiaDetalharComponent implements OnInit {
 
-  constructor() { }
+  //@ts-ignore
+  ideiaId : number;
 
-  ngOnInit() {}
+  //@ts-ignore
+  ideiaDetalhada: IdeiaDetalhes;
+
+  constructor(
+    private route: ActivatedRoute,
+    private ideiaService : IdeiasService
+  ) { }
+
+  ngOnInit() {
+    this.ideiaId = this.route.snapshot.params['id'];
+    this.ideiaService.detalharIdeia(this.ideiaId).subscribe(
+      (ideia) => this.ideiaDetalhada = ideia
+    )
+  }
+
+
 
 }

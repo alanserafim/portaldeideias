@@ -1,3 +1,5 @@
+import { UsuarioTokenInfo } from './../../login/types/UsuarioTokenInfo';
+import { UsuarioService } from './../../login/service/Usuario.service';
 import { IdeiasService } from './../service/ideias.service';
 import { IdeiaCadastro } from './../types/ideiaCadastro';
 import { Component, OnInit } from '@angular/core';
@@ -13,26 +15,31 @@ export class IdeiaCadastrarComponent implements OnInit {
 
   //@ts-ignore
   public novaIdeiaForm: FormGroup;
+  //@ts-ignore
+  public usuario$: Observable<UsuarioTokenInfo>
 
   constructor(
     private formBuilder: FormBuilder,
     private ideiaService : IdeiasService,
     private router: Router,
+    private usuarioService: UsuarioService
   ) { }
 
   ngOnInit() {
+
     this.novaIdeiaForm = this.formBuilder.group(
       {
         titulo: ["", Validators.required],
         assunto: ["", Validators.required],
         descricao: ["", Validators.required],
-        dataInclusao: ["", Validators.required],
+        dataInclusao: ["10/01/2023", Validators.required],
         usuario: [""],
       }
     )
   }
 
   public cadastrarIdeia(){
+    this.atualizaId();
     const novaIdeia = this.novaIdeiaForm.getRawValue() as IdeiaCadastro
     this.ideiaService.cadastrarIdeia(novaIdeia).subscribe(
       (resposta)=>{
@@ -40,6 +47,7 @@ export class IdeiaCadastrarComponent implements OnInit {
         this.router.navigate(['tabs/tab4'])
       },
       (error) =>{
+        console.log(novaIdeia);
         alert("ideia não cadastrada, contate o administrador");
         console.log(error);
       }
@@ -47,5 +55,42 @@ export class IdeiaCadastrarComponent implements OnInit {
 
   }
 
+  public atualizaId(){
 
+    this.usuarioService.retornaUsuario()
+    .subscribe(
+      resultado => {
+        const usuarioLogado = resultado
+        this.novaIdeiaForm.patchValue({
+          usuario: usuarioLogado.id
+        })
+      }
+    )
+  }
 }
+
+
+/*
+public detalhamentoUsuario(){
+      return this.atualizarService.detalharUsuario(this.usuarioId)
+        .subscribe(
+          resultado => {
+            const usuario : UsuarioDetails = resultado
+            console.log(usuario)
+            this.atualizarUsuarioForm.setValue({
+              id: usuario.id,
+              nome: usuario.nome,
+              registro: usuario.registro,
+              cpf: usuario.cpf,
+              perfil: usuario.perfil,
+              setor: usuario.setor,
+              letraTurno: usuario.letraTurno,
+              ramal: usuario.ramal,
+            })
+    });
+    }
+
+
+*/
+
+

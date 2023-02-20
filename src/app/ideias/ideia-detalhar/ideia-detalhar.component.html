@@ -1,3 +1,37 @@
-<p>
-  ideia-detalhar works!
-</p>
+<ion-content [fullscreen]="true" color="primary">
+  <div *ngIf="ideiaDetalhada; else loading">
+    <ion-card>
+      <img
+        alt="Silhouette of mountains"
+        src="https://ionicframework.com/docs/img/demos/card-media.png"
+      />
+      <ion-card-header>
+        <ion-card-title>{{ ideiaDetalhada.titulo }}</ion-card-title>
+        <ion-card-subtitle> Assunto: {{ ideiaDetalhada.assunto }}</ion-card-subtitle>
+        <ion-card-subtitle> Status: {{ ideiaDetalhada.status }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p> Descrição: {{ ideiaDetalhada.descricao}}</p>
+        <p> Data de Inclusão {{ ideiaDetalhada.dataInclusao }}</p>
+        <p> Data de conclusão: {{ ideiaDetalhada.dataConclusao }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Avaliação</ion-card-title>
+      <ion-card-subtitle> Feedback: </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>Comentário: </p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+
+
+
+<ng-template #loading let-user>Carregando dados</ng-template>

@@ -1,3 +1,5 @@
+import { IdeiaDetalharComponent } from './../../ideias/ideia-detalhar/ideia-detalhar.component';
+import { IdeiaListarComponent } from './../../ideias/ideia-listar/ideia-listar.component';
 import { IdeiaCadastrarComponent } from './../../ideias/ideia-cadastrar/ideia-cadastrar.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -11,7 +13,15 @@ const routes: Routes = [
   {
     path: 'cadastrar',
     component: IdeiaCadastrarComponent,
-  }
+  },
+  {
+    path: 'listar',
+    component: IdeiaListarComponent,
+  },
+  {
+    path: 'detalhar/:id',
+    component: IdeiaDetalharComponent,
+  },
 ];
 
 @NgModule({

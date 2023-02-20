@@ -1,3 +1,14 @@
-<p>
-  ideia-listar works!
-</p>
+
+<ion-list  lines="inset">
+  <ion-list-header> Minhas ideias </ion-list-header>
+
+  <ion-item *ngFor="let ideia of listaDeIdeias">
+    <div class="ideia">
+      <h2 class="ideia__titulo"> {{ideia.titulo}} </h2>
+      <p class="ideia__assunto">Assunto: {{ideia.assunto}} </p>
+      <p class="ideia__status"> Status: {{ideia.status}} </p>
+    </div>
+    <ion-button fill="clear" (click)="detalharIdeiaPage(ideia.id)"><ion-icon name="eye-outline"></ion-icon></ion-button>
+  </ion-item>
+
+</ion-list>

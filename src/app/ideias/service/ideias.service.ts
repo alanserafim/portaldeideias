@@ -40,7 +40,7 @@ export class IdeiasService {
 
   public detalharIdeia(id: any){
     const url = `${this.API}/${id}`
-    return this.http.get<IdeiaDetalhes[]>(url)
+    return this.http.get<IdeiaDetalhes>(url)
   }
 
   public excluirIdeia(id: any){
