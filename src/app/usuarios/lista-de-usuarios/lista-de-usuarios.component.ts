@@ -1,12 +1,10 @@
-import { AtualizarUsuarioService } from './../service/atualizar-usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 
-import { DeletarUsuarioService } from './../service/deletar-usuario.service';
-import { ListarUsuariosService } from './../service/listar-usuarios.service';
+import { UsuarioService } from '../service/usuario.service';
 import { UsuarioList } from './../types/UsuarioList';
-import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-lista-de-usuarios',
@@ -14,42 +12,35 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./lista-de-usuarios.component.scss'],
 })
 export class ListaDeUsuariosComponent implements OnInit {
-
   //@ts-ignore
-  usuarios$ : Observable<UsuarioList[]>;
+  usuarios$: Observable<UsuarioList[]>;
 
   constructor(
-    private listarUsuariosService : ListarUsuariosService,
-    private router : Router,
-    private deletarUsuarioService: DeletarUsuarioService,
-    private alertController: AlertController,
-    private atualizarService : AtualizarUsuarioService
+    private usuarioService: UsuarioService,
+    private router: Router,
+    private alertController: AlertController
   ) {
-
-    this.usuarios$ = this.listarUsuariosService.listarUsuarios();
+    this.usuarios$ = this.usuarioService.listarUsuarios();
   }
 
-  ngOnInit(
-  ) {
+  ngOnInit() {}
+
+  atualizarPage(id: number) {
+    const page: string = `/tabs/tab4/atualizar/${id}`;
+    this.router.navigate([page]);
   }
 
-  atualizarPage(id: number){
-    const page: string = `/tabs/tab4/atualizar/${id}`
-    this.router.navigate([page])
+  detalharPage(id: number) {
+    const page: string = `/tabs/tab4/detalhar/${id}`;
+    this.router.navigate([page]);
   }
 
-  detalharPage(id: number){
-    const page: string = `/tabs/tab4/detalhar/${id}`
-    this.router.navigate([page])
+  apagarPage(id: number) {
+    this.presentAlert(id);
   }
 
-  apagarPage(id: number){
-    this.presentAlert(id)
-
-  }
-
-  deletaUsuario(id: number){
-    this.deletarUsuarioService.deletaUsuario(id).subscribe()
+  deletaUsuario(id: number) {
+    this.usuarioService.deletaUsuario(id).subscribe();
   }
 
   async presentAlert(id: number) {
@@ -60,21 +51,19 @@ export class ListaDeUsuariosComponent implements OnInit {
         {
           text: 'Sim',
           cssClass: 'alert-button-confirm',
-          handler: data => {
-            this.deletaUsuario(id)
-          }
+          handler: (data) => {
+            this.deletaUsuario(id);
+          },
         },
         {
           text: 'Não',
           cssClass: 'alert-button-cancel',
         },
-
       ],
     });
 
     await alert.present();
   }
-
 
   // receberNomeUsuario(id : any){
   //   return this.atualizarService.detalharUsuario(id).subscribe(
@@ -83,9 +72,4 @@ export class ListaDeUsuariosComponent implements OnInit {
   //     }
   //   );
   // }
-
-
-
-
-
 }

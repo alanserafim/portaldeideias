@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AtualizarUsuarioService } from '../service/atualizar-usuario.service';
+
+import { UsuarioService } from '../service/usuario.service';
 import { UsuarioDetails } from '../types/UsuarioDetails';
 
 @Component({
@@ -9,17 +10,16 @@ import { UsuarioDetails } from '../types/UsuarioDetails';
   styleUrls: ['./detalhar-usuario.component.scss'],
 })
 export class DetalharUsuarioComponent implements OnInit {
+  //@ts-ignore
+  usuarioId: number;
 
   //@ts-ignore
-  usuarioId : number;
-
-  //@ts-ignore
-  usuario$ : Observable<UsuarioDetails>;
+  usuario$: Observable<UsuarioDetails>;
 
   constructor(
-    private atualizarService : AtualizarUsuarioService,
-    private route: ActivatedRoute,
-  ) { }
+    private usuarioService: UsuarioService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.usuarioId = this.route.snapshot.params['id'];
@@ -28,17 +28,11 @@ export class DetalharUsuarioComponent implements OnInit {
     console.log(this.usuario$);
   }
 
-  detalharDadosUsuario(){
-    return this.atualizarService.detalharUsuario(this.usuarioId).subscribe(
-      resultado => {
+  detalharDadosUsuario() {
+    return this.usuarioService
+      .detalharUsuario(this.usuarioId)
+      .subscribe((resultado) => {
         this.usuario$ = resultado;
-      }
-    );
+      });
   }
-
-
-
-
-
-
 }

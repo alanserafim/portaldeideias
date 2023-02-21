@@ -1,10 +1,11 @@
-import { IdeiaAtualizacao } from './../types/ideiaAtualizacao';
-import { IdeiaDetalhes } from './../types/ideiaDetalhes';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UsuarioService } from 'src/app/login/service/Usuario.service';
+import { UsuarioLogadoService } from 'src/app/login/service/usuario-logado.service';
+
 import { IdeiasService } from '../service/ideias.service';
+import { IdeiaAtualizacao } from './../types/ideiaAtualizacao';
+import { IdeiaDetalhes } from './../types/ideiaDetalhes';
 
 @Component({
   selector: 'app-ideia-atualizar',
@@ -24,7 +25,7 @@ export class IdeiaAtualizarComponent implements OnInit {
     private ideiaService: IdeiasService,
     private router: Router,
     private route: ActivatedRoute,
-    private usuarioService: UsuarioService
+    private usuarioLogadoService: UsuarioLogadoService
   ) {}
 
   ngOnInit() {
@@ -38,7 +39,7 @@ export class IdeiaAtualizarComponent implements OnInit {
       id: [],
     });
 
-    this.usuarioService
+    this.usuarioLogadoService
       .retornaUsuario()
       .subscribe((usuario) => (this.usuarioId = usuario.id));
 

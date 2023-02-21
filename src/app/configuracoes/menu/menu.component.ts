@@ -1,10 +1,10 @@
-import { UsuarioTokenInfo } from './../../login/types/UsuarioTokenInfo';
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from 'src/app/login/service/Usuario.service';
-import { UsuarioMenuService } from './services/usuario-menu.service';
-import { TokenInterceptorService } from 'src/app/login/service/token-interceptor.service';
-import { TokenService } from 'src/app/login/service/token.service';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/login/service/token.service';
+import { UsuarioService } from 'src/app/usuarios/service/usuario.service';
+
+import { UsuarioLogadoService } from './../../login/service/usuario-logado.service';
+import { UsuarioTokenInfo } from './../../login/types/UsuarioTokenInfo';
 
 @Component({
   selector: 'app-menu',
@@ -12,52 +12,53 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
+  //@ts-ignore
+  usuarioLogado$: Observable<UsuarioTokenInfo>;
 
   //@ts-ignore
-  usuarioLogado$ : Observable<UsuarioTokenInfo>;
-
-  //@ts-ignore
-  usuario$ : Observable<UsuarioDetails>;
+  usuario$: Observable<UsuarioDetails>;
 
   constructor(
-    private usuarioMenuService : UsuarioMenuService,
-    private usuarioService : UsuarioService,
-    private tokenService : TokenService,
+    private usuarioService: UsuarioService,
+    private usuarioLogadoService: UsuarioLogadoService,
+    private tokenService: TokenService,
     private route: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.recebeUsuarioLogado()
+    this.recebeUsuarioLogado();
     console.log(this.usuarioLogado$.id);
   }
 
-  public detalharDados(){
-    return this.usuarioMenuService.detalharUsuario(this.usuarioLogado$.id).subscribe(
+  public detalharDados() {
+    return this.usuarioService
+      .detalharUsuario(this.usuarioLogado$.id)
+      .subscribe(
+        (dados) => {
+          this.usuario$ = dados;
+          console.log(this.usuario$);
+        },
+        (error) => {
+          alert('Erro ao detalhar usuario');
+          console.log(error);
+        }
+      );
+  }
+
+  public recebeUsuarioLogado() {
+    this.usuarioLogadoService.retornaUsuario().subscribe(
       (dados) => {
-        this.usuario$ = dados
-        console.log(this.usuario$);
-      }, (error) => {
-        alert("Erro ao detalhar usuario");
+        this.usuarioLogado$ = dados;
+      },
+      (error) => {
+        alert('Erro ao receber usuário logado');
         console.log(error);
       }
     );
-
   }
 
-  public recebeUsuarioLogado(){
-    this.usuarioService.retornaUsuario().subscribe(
-      (dados) => {
-        this.usuarioLogado$ = dados
-      }, (error) => {
-        alert("Erro ao receber usuário logado");
-        console.log(error);
-      }
-    );
-  }
-
-  public logout(){
+  public logout() {
     this.tokenService.excluiToken();
     this.route.navigate(['/']);
   }
-
 }

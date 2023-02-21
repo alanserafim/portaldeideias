@@ -1,10 +1,11 @@
-import { UsuarioTokenInfo } from './../../login/types/UsuarioTokenInfo';
-import { UsuarioService } from './../../login/service/Usuario.service';
-import { IdeiasService } from './../service/ideias.service';
-import { IdeiaCadastro } from './../types/ideiaCadastro';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { UsuarioLogadoService } from '../../login/service/usuario-logado.service';
+import { UsuarioTokenInfo } from './../../login/types/UsuarioTokenInfo';
+import { IdeiasService } from './../service/ideias.service';
+import { IdeiaCadastro } from './../types/ideiaCadastro';
 
 @Component({
   selector: 'app-ideia-cadastrar',
@@ -21,7 +22,7 @@ export class IdeiaCadastrarComponent implements OnInit {
     private formBuilder: FormBuilder,
     private ideiaService: IdeiasService,
     private router: Router,
-    private usuarioService: UsuarioService
+    private usuarioLogadoService: UsuarioLogadoService
   ) {}
 
   ngOnInit() {
@@ -51,7 +52,7 @@ export class IdeiaCadastrarComponent implements OnInit {
   }
 
   public atualizaId() {
-    this.usuarioService.retornaUsuario().subscribe((resultado) => {
+    this.usuarioLogadoService.retornaUsuario().subscribe((resultado) => {
       const usuarioLogado = resultado;
       this.novaIdeiaForm.patchValue({
         usuario: usuarioLogado.id,

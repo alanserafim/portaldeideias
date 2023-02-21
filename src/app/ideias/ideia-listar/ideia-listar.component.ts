@@ -1,9 +1,9 @@
-import { map } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { UsuarioLogadoService } from './../../login/service/usuario-logado.service';
 import { IdeiasService } from './../service/ideias.service';
 import { IdeiaDetalhes } from './../types/ideiaDetalhes';
-import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from 'src/app/login/service/Usuario.service';
 
 @Component({
   selector: 'app-ideia-listar',
@@ -11,39 +11,36 @@ import { UsuarioService } from 'src/app/login/service/Usuario.service';
   styleUrls: ['./ideia-listar.component.scss'],
 })
 export class IdeiaListarComponent implements OnInit {
-
   //@ts-ignore
   listaDeIdeias: IdeiaDetalhes[];
   //@ts-ignore
   usuarioId: any;
 
   constructor(
-    private router : Router,
-    private ideiaService : IdeiasService,
-    private usuarioService: UsuarioService
-  ) { }
+    private router: Router,
+    private ideiaService: IdeiasService,
+    private usuarioLogadoService: UsuarioLogadoService
+  ) {}
 
   ngOnInit() {
     this.getListaDeIdeias();
   }
 
-  detalharIdeiaPage(id: any){
-    const page: string = `/tabs/tab1/detalhar/${id}`
-    this.router.navigate([page])
+  detalharIdeiaPage(id: any) {
+    const page: string = `/tabs/tab1/detalhar/${id}`;
+    this.router.navigate([page]);
   }
 
-  getListaDeIdeias(){
+  getListaDeIdeias() {
     this.getUsuarioLogado();
-    this.ideiaService.listarIdeiasPorUsuario(this.usuarioId).subscribe(
-      (lista) => this.listaDeIdeias = lista
-    )
+    this.ideiaService
+      .listarIdeiasPorUsuario(this.usuarioId)
+      .subscribe((lista) => (this.listaDeIdeias = lista));
   }
 
-  getUsuarioLogado(){
-    this.usuarioService.retornaUsuario().subscribe(
-        (usuario)=> this.usuarioId = usuario.id
-    )
+  getUsuarioLogado() {
+    this.usuarioLogadoService
+      .retornaUsuario()
+      .subscribe((usuario) => (this.usuarioId = usuario.id));
   }
-
-
 }
