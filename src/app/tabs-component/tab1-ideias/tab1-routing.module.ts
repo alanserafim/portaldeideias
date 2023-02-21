@@ -1,3 +1,4 @@
+import { IdeiaAtualizarComponent } from './../../ideias/ideia-atualizar/ideia-atualizar.component';
 import { IdeiaDetalharComponent } from './../../ideias/ideia-detalhar/ideia-detalhar.component';
 import { IdeiaListarComponent } from './../../ideias/ideia-listar/ideia-listar.component';
 import { IdeiaCadastrarComponent } from './../../ideias/ideia-cadastrar/ideia-cadastrar.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'detalhar/:id',
     component: IdeiaDetalharComponent,
+  },
+  {
+    path: 'atualizar/:id',
+    component: IdeiaAtualizarComponent,
   },
 ];
 

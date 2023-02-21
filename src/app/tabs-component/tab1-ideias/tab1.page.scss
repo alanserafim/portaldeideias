@@ -12,7 +12,10 @@
   align-items: center;
 
   ion-avatar {
-    width: 40%;
+    width: 25%;
+    @media(min-width: 600px) {
+      width: 8%;
+    }
     height: auto;
     margin-top: 4rem;
   }

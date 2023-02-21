@@ -1,3 +1,52 @@
-<p>
-  ideia-atualizar works!
-</p>
+<ion-content [fullscreen]="true" color="">
+  <form
+    [formGroup]="atualizaIdeiaForm"
+    (submit)="atualizarIdeia()"
+  >
+    <h1 class="titulo">Atualizar ideia</h1>
+      <ion-item>
+        <ion-label>Titulo: </ion-label>
+        <ion-input
+          formControlName="titulo"
+          name="titulo"
+        ></ion-input>
+      </ion-item>
+
+      <ion-list>
+        <ion-item>
+          Assunto: &nbsp;
+          <ion-select
+            placeholder="selecione"
+            formControlName="assunto"
+            name="assunto"
+          >
+          <ion-select-option value="6S">6S</ion-select-option>
+          <ion-select-option value="PRODUTIVIDADE">Produtividade</ion-select-option>
+            <ion-select-option value="MELHORIA_CONTINUA">Melhoria Contínua</ion-select-option>
+            <ion-select-option value="OUTROS">Outros</ion-select-option>
+            <ion-select-option value="TODOS">Todos</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <ion-item>
+        <ion-label>Descrição: </ion-label>
+        <ion-textarea
+          placeholder="Descreva aqui a sua ideia" [autoGrow]="true"
+          formControlName="descricao"
+          name="descricao"
+          >
+        </ion-textarea>
+      </ion-item>
+
+      <input
+      type="hidden"
+      formControlName="id"
+      name="id"
+      >
+      <div class="buttons">
+        <ion-button type="submit" color="tertiary">Atualizar</ion-button>
+        <ion-button type="reset" color="medium">Apagar Dados</ion-button>
+      </div>
+  </form>
+</ion-content>

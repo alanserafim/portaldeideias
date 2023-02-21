@@ -18,10 +18,6 @@ export class ListaDeUsuariosComponent implements OnInit {
   //@ts-ignore
   usuarios$ : Observable<UsuarioList[]>;
 
-  //@ts-ignore
-  // usuarioNome : String;
-
-
   constructor(
     private listarUsuariosService : ListarUsuariosService,
     private router : Router,

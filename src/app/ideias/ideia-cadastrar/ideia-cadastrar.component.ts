@@ -12,63 +12,53 @@ import { Router } from '@angular/router';
   styleUrls: ['./ideia-cadastrar.component.scss'],
 })
 export class IdeiaCadastrarComponent implements OnInit {
-
   //@ts-ignore
   public novaIdeiaForm: FormGroup;
   //@ts-ignore
-  public usuario$: Observable<UsuarioTokenInfo>
+  public usuario$: Observable<UsuarioTokenInfo>;
 
   constructor(
     private formBuilder: FormBuilder,
-    private ideiaService : IdeiasService,
+    private ideiaService: IdeiasService,
     private router: Router,
     private usuarioService: UsuarioService
-  ) { }
+  ) {}
 
   ngOnInit() {
-
-    this.novaIdeiaForm = this.formBuilder.group(
-      {
-        titulo: ["", Validators.required],
-        assunto: ["", Validators.required],
-        descricao: ["", Validators.required],
-        dataInclusao: ["10/01/2023", Validators.required],
-        usuario: [""],
-      }
-    )
+    this.novaIdeiaForm = this.formBuilder.group({
+      titulo: ['', Validators.required],
+      assunto: ['', Validators.required],
+      descricao: ['', Validators.required],
+      dataInclusao: ['10/01/2023', Validators.required],
+      usuario: [''],
+    });
   }
 
-  public cadastrarIdeia(){
+  public cadastrarIdeia() {
     this.atualizaId();
-    const novaIdeia = this.novaIdeiaForm.getRawValue() as IdeiaCadastro
+    const novaIdeia = this.novaIdeiaForm.getRawValue() as IdeiaCadastro;
     this.ideiaService.cadastrarIdeia(novaIdeia).subscribe(
-      (resposta)=>{
-        alert("Ideia cadastrada com sucesso");
-        this.router.navigate(['tabs/tab4'])
+      (resposta) => {
+        alert('Ideia cadastrada com sucesso');
+        this.router.navigate(['tabs/tab1']);
       },
-      (error) =>{
+      (error) => {
         console.log(novaIdeia);
-        alert("ideia não cadastrada, contate o administrador");
+        alert('ideia não cadastrada, contate o administrador');
         console.log(error);
       }
-    )
-
+    );
   }
 
-  public atualizaId(){
-
-    this.usuarioService.retornaUsuario()
-    .subscribe(
-      resultado => {
-        const usuarioLogado = resultado
-        this.novaIdeiaForm.patchValue({
-          usuario: usuarioLogado.id
-        })
-      }
-    )
+  public atualizaId() {
+    this.usuarioService.retornaUsuario().subscribe((resultado) => {
+      const usuarioLogado = resultado;
+      this.novaIdeiaForm.patchValue({
+        usuario: usuarioLogado.id,
+      });
+    });
   }
 }
-
 
 /*
 public detalhamentoUsuario(){
@@ -92,5 +82,3 @@ public detalhamentoUsuario(){
 
 
 */
-
-
