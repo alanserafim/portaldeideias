@@ -5,6 +5,7 @@ import { IdeiaCadastro } from './../types/ideiaCadastro';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from '../service/message.service';
 
 @Component({
   selector: 'app-ideia-cadastrar',
@@ -17,11 +18,14 @@ export class IdeiaCadastrarComponent implements OnInit {
   //@ts-ignore
   public usuario$: Observable<UsuarioTokenInfo>;
 
+  stompClient = this.messageService.connect();
+
   constructor(
     private formBuilder: FormBuilder,
     private ideiaService: IdeiasService,
     private router: Router,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit() {
@@ -37,17 +41,22 @@ export class IdeiaCadastrarComponent implements OnInit {
   public cadastrarIdeia() {
     this.atualizaId();
     const novaIdeia = this.novaIdeiaForm.getRawValue() as IdeiaCadastro;
-    this.ideiaService.cadastrarIdeia(novaIdeia).subscribe(
-      (resposta) => {
-        alert('Ideia cadastrada com sucesso');
-        this.router.navigate(['tabs/tab1']);
-      },
-      (error) => {
-        console.log(novaIdeia);
-        alert('ideia não cadastrada, contate o administrador');
-        console.log(error);
-      }
-    );
+    
+    this.stompClient.connect({}, frame => {
+      this.stompClient.subscribe('/topic/notification', notifications => {
+        this.ideiaService.cadastrarIdeia(novaIdeia).subscribe(
+          (resposta) => {
+            alert('Ideia cadastrada com sucesso');
+            this.router.navigate(['tabs/tab1']);
+          },
+          (error) => {
+            console.log(novaIdeia);
+            alert('ideia não cadastrada, contate o administrador');
+            console.log(error);
+          }
+        ); 
+      });
+    })
   }
 
   public atualizaId() {

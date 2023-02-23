@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
+import { MessageService } from './service/message.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     IdeiaDetalharComponent,
     IdeiaAtualizarComponent,
     IdeiaListarComponent
-  ]
+  ],
+  providers: [MessageService], 
 })
 export class IdeiasModule { }

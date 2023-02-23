@@ -4,6 +4,7 @@ import { IdeiaDetalhes } from './../types/ideiaDetalhes';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/login/service/Usuario.service';
+import { MessageService } from '../service/message.service';
 
 @Component({
   selector: 'app-ideia-listar',
@@ -20,8 +21,18 @@ export class IdeiaListarComponent implements OnInit {
   constructor(
     private router : Router,
     private ideiaService : IdeiasService,
-    private usuarioService: UsuarioService
-  ) { }
+    private usuarioService: UsuarioService,
+    private messageService: MessageService
+  ) { 
+    let stompClient = this.messageService.connect();
+
+    stompClient.connect({}, frame => {
+      stompClient.subscribe('/all/ideias', ideais => {
+        console.log(ideais);
+        console.log("Nova ideia cadastrada");
+      })
+    })
+  }
 
   ngOnInit() {
     this.getListaDeIdeias();
