@@ -6,8 +6,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { ReactiveFormsModule } from '@angular/forms';
-
-import { MessageService } from './service/message.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,8 @@ import { MessageService } from './service/message.service';
   imports: [
     CommonModule,
     IonicModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports:[
     IdeiaCadastrarComponent,
@@ -28,6 +28,5 @@ import { MessageService } from './service/message.service';
     IdeiaAtualizarComponent,
     IdeiaListarComponent
   ],
-  providers: [MessageService], 
 })
 export class IdeiasModule { }

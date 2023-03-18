@@ -22,19 +22,12 @@ export class IdeiaListarComponent implements OnInit {
     private router : Router,
     private ideiaService : IdeiasService,
     private usuarioService: UsuarioService,
-    private messageService: MessageService
+    //private messageService: MessageService
   ) { 
-    let stompClient = this.messageService.connect();
-
-    stompClient.connect({}, frame => {
-      stompClient.subscribe('/all/ideias', ideais => {
-        console.log(ideais);
-        console.log("Nova ideia cadastrada");
-      })
-    })
   }
 
   ngOnInit() {
+    //this.messageService._connect();
     this.getListaDeIdeias();
   }
 
@@ -55,6 +48,4 @@ export class IdeiaListarComponent implements OnInit {
         (usuario)=> this.usuarioId = usuario.id
     )
   }
-
-
 }
